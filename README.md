@@ -61,8 +61,10 @@
 |id|カラム特定のためのid|auto_increment<br>primary key|-
 |round|試合の段階|not null<br>varchar 20|-
 |match_name|大会の名前|not null<br>varchar 100|-
-|my_score|自分の得点|not null<br>varchar 10|-
-|opponent_score|相手の得点|not null<br>varchar 10|-
+|my_score|自分の得点|not null<br>int 10|-
+|opponent_score|相手の得点|not null<br>int 10|-
 |match_date|試合の日付|not null<br>date|-
 |opponent_name|相手の名前|not null<br>varchar 20|-
+|created_at|作成日時|not null<br>date|-
+|updated_at|更新日時|not null<br>date|-
 |user_id|対戦相手のid|not null|外部キー
