@@ -67,4 +67,4 @@
 |opponent_name|相手の名前|not null<br>varchar 20|-
 |created_at|作成日時|not null<br>date|-
 |updated_at|更新日時|not null<br>date|-
-|user_id|対戦相手のid|not null|外部キー
+|user_id|ユーザーのid|not null|外部キー
