@@ -1,0 +1,30 @@
+@startuml
+
+class User{
+    int id
+    varchar user_name
+    varchar mail
+    varchar ps
+    varchar answer
+    datetime created_at
+    datetime updated_at
+
+    login()
+    register_result()
+}
+
+class Result{
+       int id
+       varchar round
+       varchar match_name
+       int my_score
+       int opponent_score
+       datetime match_date
+       varchar opponent_name
+       datetime created_at
+       datetime updated_at
+}
+
+User"1" o-- "0..*"Result
+
+@enduml
