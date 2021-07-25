@@ -21,17 +21,13 @@
 対戦結果検索画面から対戦相手を検索すると候補画面に遷移する．<br>
 候補一覧から詳しくみたい対戦を押すと，対戦結果詳細画面(結果や対戦場面)が表示される．
 
-#### 1.5. 対戦結果編集機能
-対戦結果詳細画面から「対戦結果編集」ボタンを押すと編集画面に遷移する．
-編集に成功すると対戦結果詳細画面に遷移する．
-
-#### 1.6. 対戦結果削除機能
+#### 1.5. 対戦結果削除機能
 対戦結果詳細画面から「削除」ボタンを押すと削除される．
 
-#### 1.7. ログアウト機能
+#### 1.6. ログアウト機能
 トップページの「ログアウト」を押すと，ログイン画面に遷移する．
 
-#### 1.8. パスワード変更機能
+#### 1.7. パスワード変更機能
 ログイン画面，またはマイページの「パスワード変更」ボタンを押すとパスワード変更画面に遷移する．<br>
 新しく設定したいパスワードを入力してもらい，新規登録の際に設定した秘密の質問に答えてもらう．<br>
 答えがあっていたら再設定に成功し，ログイン画面に遷移する．
@@ -48,23 +44,47 @@
 |id|カラム特定のためのid|auto_increment<br>primary key|-
 |name|ユーザー名|not null<br>varchar 20|-
 |mail|メールアドレス|not null<br>unique<br>varchar 255|-
-|ps|パスワード|not null<br>varchar 20|-
-|answer|質問の答え|not null<br>varchar 100|-
+|ps|パスワード|not null<br>varchar 255|-
+|answer|質問の答え|not null<br>varchar 255|-
 |created_at|作成日時|not null<br>date|-
 |updated_at|更新日時|not null<br>date|-
-|question_id|秘密の質問|not null|外部キー
+|questions_id|秘密の質問|not null|外部キー
 
-#### 2.2. 対戦結果データベース(result)
+#### 2.2. 質問データベース(questions)
 
 |名前|説明|制約|備考|
 |:---:|:---:|:---:|:---:|
-|id|カラム特定のためのid|auto_increment<br>primary key|-
-|round|試合の段階|not null<br>varchar 20|-
-|match_name|大会の名前|not null<br>varchar 100|-
-|my_score|自分の得点|not null<br>int 10|-
-|opponent_score|相手の得点|not null<br>int 10|-
-|match_date|試合の日付|not null<br>date|-
-|opponent_name|相手の名前|not null<br>varchar 20|-
-|created_at|作成日時|not null<br>date|-
-|updated_at|更新日時|not null<br>date|-
-|user_id|ユーザーのid|not null|外部キー
+|id|カラム特定のためのID|primary key|-|
+|content|質問内容|not null<br>varchar 255|-
+
+#### 2.3. 戦績登録データベース(regist)
+
+|名前|説明|制約|備考|
+|:---:|:---:|:---:|:---:|
+|id|カラム特定のためのid|primary key|-
+|match_id|登録する試合のid|not null|-
+|users_id|登録するユーザーのid|not null|外部キー
+
+#### 2.4. 試合データベース(match)
+
+|名前|説明|制約|備考|
+|:---:|:---:|:---:|:---:|
+|id|カラム特定のためのid|primary key|-
+|round|試合の段階|not null<br>varchar 30|-
+|match_name|大会の名前|not null<br>varchar 30|-
+
+#### 2.5. 対戦詳細データベース(result)
+
+|名前|説明|制約|備考|
+|:---:|:---:|:---:|:---:|
+|my_score|自分の得点|not null<br>int|-
+|opponent_score|相手の得点|not null<br>int|-
+|match_id|登録する試合の詳細のid|not null|外部キー
+|opponents_id|対戦した相手のid|not null|外部キー
+
+#### 2.6. 対戦相手データベース(opponents)
+
+|名前|説明|制約|備考|
+|:---:|:---:|:---:|:---:|
+|id|カラム特定のためのid|primary key|-
+|name|名前|not null<br>varchar 20|-
