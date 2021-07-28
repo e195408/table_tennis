@@ -46,6 +46,7 @@ public class UserDAO extends Client {
         }
     }
 
+    //ログインの際にユーザー名からそのユーザーが存在するか検索するメソッド
     public static User selectUserByMail(String mail) {
         Connection connection = null;
         PreparedStatement stmt = null;
