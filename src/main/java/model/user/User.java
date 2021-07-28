@@ -29,7 +29,7 @@ public class User extends Default {
             Timestamp updatedAt,
             Integer questionId
     ){
-        super(id, createdAt, updatedAt);
+        super(id);
         //親クラスのインスタンスを呼び出す
         this.name = name;
         this.mail = mail;

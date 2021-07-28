@@ -67,8 +67,7 @@ public class UserDAO extends Client {
                         rs.getString("answer"),
                         rs.getTimestamp("created_at"),
                         rs.getTimestamp("updated_at"),
-                        rs.getInt("questions_id")
-                );
+                        rs.getInt("questions_id"));
             }
             return user;
         } catch (SQLException e) {
