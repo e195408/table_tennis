@@ -55,9 +55,7 @@ public class User extends Default {
     public String getPs(){ return this.ps; }
     public Integer getQuestionId(){ return this.questionId; }
     public String getAnswer(){ return this.answer; }
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
+    public Timestamp getCreatedAt() { return createdAt; }
     public Timestamp getUpdatedAt() { return updatedAt; }
 
     //controller/user/SignUp.javaからの呼び出し

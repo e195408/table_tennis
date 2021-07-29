@@ -1,25 +1,21 @@
-package controller.match;
+package controller.opponent;
 
-import  model.match.Match;
-import model.match.MatchDAO;
+import model.opponent.Opponent;
+import model.opponent.OpponentDAO;
 import model.user.User;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
-@WebServlet("/Match/New")
-public class New extends HttpServlet{
-    private HttpServletRequest httpServletRequest;
-
+@WebServlet("/Opponent/New")
+public class New extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/match/new.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/opponent/New.jsp");
         dispatcher.forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,20 +25,13 @@ public class New extends HttpServlet{
         //requestオブジェクトから情報を取り出す
         Integer id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
-        String round = request.getParameter("round");
 
-        HttpSession session = request.getSession();
-        User user = (User)session.getAttribute("currentUser");
-        Integer userId = user.getId();
-
-        //Matchインスタンスの生成
-        Match match = new Match(
+        //Userインスタンスの生成
+        Opponent opponent = new Opponent(
                 id,
-                name,
-                round
+                name
         );
-
-        MatchDAO.registMatch(match,userId);
+        OpponentDAO.registOpponent(opponent);
 
         //成功したらsampleTest.javaにGETリクエストを送る
         response.sendRedirect("/test");
