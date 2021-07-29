@@ -3,9 +3,14 @@
 
 <html>
 <head>
-    <title>Test</title>
+    <title>マイページ</title>
 </head>
 <body>
-    <p>登録完了</p>
+<p>ようこそマイページへ</p>
+<a href = /Match/New>試合登録する</a>
+<br>
+<a href = /Opponent/New>新規対戦相手登録する</a>
+<br>
+<a href = /Result/New>試合詳細登録する</a>
 </body>
 </html>

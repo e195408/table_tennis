@@ -2,9 +2,11 @@ package model.opponent;
 //  自分が格納されているフォルダの外にある必要なクラス
 
 import lib.mysql.Client;
+import model.match.Match;
 import model.user.User;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class OpponentDAO extends Client {
     //User登録メソッド
@@ -39,38 +41,35 @@ public class OpponentDAO extends Client {
             close(connection, stmt, rs);
         }
     }
-//
-//    public static User selectUserByMail(String mail) {
-//        Connection connection = null;
-//        PreparedStatement stmt = null;
-//        ResultSet rs = null;
-//        try {
-//            String sql = "select * from users where mail = ?";
-//            connection = create();
-//            stmt = connection.prepareStatement(sql);
-//            stmt.setString(1, mail);
-//            rs = stmt.executeQuery();
-//            //スコープの問題があるので一旦外で定義
-//            User user = null;
-//            if (rs.next()) {
-//                user = new User(
-//                        rs.getInt("id"),
-//                        rs.getString("name"),
-//                        rs.getString("mail"),
-//                        rs.getString("ps"),
-//                        rs.getString("answer"),
-//                        rs.getTimestamp("created_at"),
-//                        rs.getTimestamp("updated_at"),
-//                        rs.getInt("questions_id")
-//                );
-//            }
-//            return user;
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            return null;
-//        } finally {
-//            close(connection, stmt, rs);
-//        }
-//    }
+
+    public ArrayList<Opponent> searchOpponentList(){
+        Connection connection = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            ArrayList<Opponent> list = new ArrayList<Opponent>();
+            // SQLコマンド
+            String sql = "select * from opponents";
+            connection = create();
+            // SQLのコマンドを実行する
+            // 実行結果はrsに格納される
+            stmt = connection.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while(rs.next())
+            {
+                Opponent opponent = new Opponent(rs.getInt(1),rs.getString(2));
+                list.add(opponent);
+                // 取得した情報を表示します。
+            }
+            return list;
+        } catch (SQLException e) {
+            // エラーが発生した場合、エラーの原因を出力する
+            e.printStackTrace();
+            return null;
+        } finally {
+            close(connection,stmt,rs);
+        }
+    }
 
 }

@@ -17,9 +17,6 @@ public class NewServlet extends HttpServlet {
         String mail = request.getParameter("mail");
         String ps = request.getParameter("ps");
 
-        System.out.println(mail);
-        System.out.println(ps);
-
         User user = new User(
                 null,
                 null,

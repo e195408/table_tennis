@@ -61,7 +61,7 @@
 
 |名前|説明|制約|備考|
 |:---:|:---:|:---:|:---:|
-|id|カラム特定のためのid|primary key|-
+|id|カラム特定のためのid|auto increment<br>primary key|-
 |match_id|登録する試合のid|not null|-
 |users_id|登録するユーザーのid|not null|外部キー
 

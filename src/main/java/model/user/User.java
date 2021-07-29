@@ -17,6 +17,8 @@ public class User extends Default {
     private String ps ;
     private String answer ;
     private Integer questionId ;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
     //Servlet内で作るインスタンス用のコンストラクタ
     public User(
@@ -36,6 +38,8 @@ public class User extends Default {
         this.ps = ps;
         this.questionId = questionId;
         this.answer = answer;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     //setメソッド
@@ -51,8 +55,10 @@ public class User extends Default {
     public String getPs(){ return this.ps; }
     public Integer getQuestionId(){ return this.questionId; }
     public String getAnswer(){ return this.answer; }
+    public Timestamp getCreatedAt() { return createdAt; }
+    public Timestamp getUpdatedAt() { return updatedAt; }
 
-    //controller/User/SignUp.javaからの呼び出し
+    //controller/user/SignUp.javaからの呼び出し
     public void registUser(){
         this.hashPassword();
         UserDAO.registUser(this);
@@ -106,15 +112,5 @@ public class User extends Default {
         }
         return stringBuffer.toString();
     }
-
-//    public static User getCurrentUser(HttpServletRequest request) {
-//        HttpSession session = request.getSession();
-//        return (User) session.getAttribute(currentUserKey);
-//    }
-//    //セッションスコープからcurrentUserKeyを取り除く
-//    public static void logoutUser(HttpServletRequest request) {
-//        HttpSession session = request.getSession();
-//        session.removeAttribute(currentUserKey);
-//    }
 
 }

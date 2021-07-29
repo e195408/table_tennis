@@ -13,6 +13,6 @@
 <body>
 <p>ログイン成功</p>
 <p>あなたの名前は${currentUser.getName()}</p>
-<a href = /Opponent/New>新規対戦相手登録</a>
+<a href = /test>マイページへ移動する</a><br>
 </body>
 </html>

@@ -2,9 +2,11 @@ package model.user;
 //  自分が格納されているフォルダの外にある必要なクラス
 
 import lib.mysql.Client;
+import model.match.Match;
 import model.user.User;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class UserDAO extends Client {
@@ -46,6 +48,7 @@ public class UserDAO extends Client {
         }
     }
 
+    //ログインの際にユーザー名からそのユーザーが存在するか検索するメソッド
     public static User selectUserByMail(String mail) {
         Connection connection = null;
         PreparedStatement stmt = null;
