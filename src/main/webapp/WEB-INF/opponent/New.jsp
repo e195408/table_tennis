@@ -15,11 +15,6 @@
 <form action="/Opponent/New" method="post">
     <table>
         <tr>
-            <tb>ID</tb>
-            <tb><input type="number" name="id" required/></tb>
-        </tr>
-        <br>
-        <tr>
             <tb>氏名</tb>
             <tb><input type="text" name="name" required/></tb>
         </tr>

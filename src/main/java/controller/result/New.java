@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -23,16 +24,22 @@ import java.util.UUID;
 @WebServlet("/Result/New")
 public class New extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // sessionからuserIdを持ってくる
+        HttpSession session = request.getSession();
+        User user = (User)session.getAttribute("currentUser");
+        Integer userId = user.getId();
+
+        // MatchListを作成
         ArrayList<Match> list = new ArrayList<>();
-        // MatchManagerオブジェクトの生成
-        MatchDAO manager = new MatchDAO();
-        // 大会名をlistに返す
-        list = manager.searchMatchList();
+        MatchDAO matchDAO= new MatchDAO();
+        // userIdからmatchListをさがす
+        list = matchDAO.searchMatchList(userId);
 
         // OpponentListを作成
         ArrayList<Opponent> opponentList = new ArrayList<>();
         OpponentDAO opponentDAO = new OpponentDAO();
-        opponentList = opponentDAO.searchOpponentList();
+        // userIdからopponentListを探す
+        opponentList = opponentDAO.searchOpponentList(userId);
 
         // requestオブジェクトの文字エンコーディングの設定
         request.setCharacterEncoding("UTF-8");
@@ -67,6 +74,6 @@ public class New extends HttpServlet {
         ResultDAO.registResult(result);
 
         //成功したらsampleTest.javaにGETリクエストを送る
-        response.sendRedirect("/test");
+        response.sendRedirect("/success");
     }
 }

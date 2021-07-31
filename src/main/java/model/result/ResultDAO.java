@@ -24,7 +24,7 @@ public class ResultDAO extends Client{
 
         try {
             //SQLコマンド
-            String sql = "insert into results (my_score,opponent_score,regist_id,opponents_id) values(?, ?, ?,?)";
+            String sql = "insert into results (my_score,opponent_score,regists_id,opponents_id) values(?, ?, ?,?)";
 
             connection = create();
 

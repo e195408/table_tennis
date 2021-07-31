@@ -27,6 +27,7 @@
                     <option value="1">飼っていたペットの名前は？</option>
                     <option value="2">最初に行った海外の都市は？</option>
                     <option value="3">兄弟姉妹の名前は？</option>
+                    <option value="4">好きなスポーツは？</option>
                 </select>
                 →質問の答え
                 <input type="answer" name="answer" required />

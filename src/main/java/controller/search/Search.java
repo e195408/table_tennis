@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -23,10 +24,15 @@ import java.util.UUID;
 @WebServlet("/Search")
 public class Search extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // sessionからuserIdを持ってくる
+        HttpSession session = request.getSession();
+        User user = (User)session.getAttribute("currentUser");
+        Integer userId = user.getId();
+
         // OpponentListを作成
         ArrayList<Opponent> opponentList = new ArrayList<>();
         OpponentDAO opponentDAO = new OpponentDAO();
-        opponentList = opponentDAO.searchOpponentList();
+        opponentList = opponentDAO.searchOpponentList(userId);
 
         // requestオブジェクトの文字エンコーディングの設定
         request.setCharacterEncoding("UTF-8");

@@ -17,7 +17,7 @@
     <tr>
         <th>相手の名前</th>
         <th>自分の取ったセット数</th>
-        <th>相手の点数</th>
+        <th>相手の取ったセット数</th>
     </tr>
     <br>
     <c:forEach var="result" items="${result}">

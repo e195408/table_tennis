@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/Opponent/New")
@@ -23,17 +24,20 @@ public class New extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         //requestオブジェクトから情報を取り出す
-        Integer id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
 
-        //Userインスタンスの生成
+        HttpSession session = request.getSession();
+        User user = (User)session.getAttribute("currentUser");
+
+        //Opponentインスタンスの生成
         Opponent opponent = new Opponent(
-                id,
-                name
+                null,
+                name,
+                user.getId()
         );
         OpponentDAO.registOpponent(opponent);
 
         //成功したらsampleTest.javaにGETリクエストを送る
-        response.sendRedirect("/test");
+        response.sendRedirect("/success");
     }
 }
