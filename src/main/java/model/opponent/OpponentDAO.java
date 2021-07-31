@@ -5,6 +5,7 @@ import lib.mysql.Client;
 import model.match.Match;
 import model.user.User;
 
+import javax.servlet.http.HttpSession;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ public class OpponentDAO extends Client {
 
         try {
             //SQLコマンド
-            String sql = "insert into opponents (id,name) values(?,?)";
+            String sql = "insert into opponents (name,users_id) values(?,?)";
 
             connection = create();
 
@@ -28,8 +29,8 @@ public class OpponentDAO extends Client {
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 
             //SQLコマンドの?に値を代入する
-            stmt.setInt(1, opponent.getId());
-            stmt.setString(2, opponent.getName());
+            stmt.setString(1, opponent.getName());
+            stmt.setInt(2, opponent.getUserId());
 
             stmt.executeUpdate();
             return;
@@ -42,14 +43,14 @@ public class OpponentDAO extends Client {
         }
     }
 
-    public ArrayList<Opponent> searchOpponentList(){
+    public ArrayList<Opponent> searchOpponentList(Integer userId){
         Connection connection = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
             ArrayList<Opponent> list = new ArrayList<Opponent>();
             // SQLコマンド
-            String sql = "select * from opponents";
+            String sql = "select * from opponents where users_id = '" + userId + "'";
             connection = create();
             // SQLのコマンドを実行する
             // 実行結果はrsに格納される
@@ -58,7 +59,7 @@ public class OpponentDAO extends Client {
 
             while(rs.next())
             {
-                Opponent opponent = new Opponent(rs.getInt(1),rs.getString(2));
+                Opponent opponent = new Opponent(rs.getInt(1),rs.getString(2),rs.getInt(3));
                 list.add(opponent);
                 // 取得した情報を表示します。
             }

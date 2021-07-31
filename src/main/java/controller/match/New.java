@@ -2,6 +2,8 @@ package controller.match;
 
 import  model.match.Match;
 import model.match.MatchDAO;
+import model.regist.Regist;
+import model.regist.RegistDAO;
 import model.user.User;
 
 import java.io.IOException;
@@ -41,10 +43,18 @@ public class New extends HttpServlet{
                 name,
                 round
         );
+        // Registインスタンスの生成
+        Regist regist = new Regist(
+                null,
+                id,
+                userId
+        );
 
-        MatchDAO.registMatch(match,userId);
+        MatchDAO.registMatch(match);
+        RegistDAO.registRegists(regist);
+
 
         //成功したらsampleTest.javaにGETリクエストを送る
-        response.sendRedirect("/test");
+        response.sendRedirect("/success");
     }
 }

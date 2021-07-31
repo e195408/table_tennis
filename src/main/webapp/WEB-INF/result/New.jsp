@@ -21,7 +21,7 @@
                 <select name="match" class="form-select">
                     <option selected>選択してください</option>
                     <c:forEach var="matchList" items="${matchList}">
-                        <option value="${matchList.id}"><c:out value="${matchList.name}"/></option>
+                        <option value="${matchList.id}"><c:out value="${matchList.name}${matchList.round}"/></option>
                     </c:forEach>
                 </select>
             </tb>
@@ -41,12 +41,12 @@
         <br>
         <tr>
             <tb>自分の取ったセット数</tb>
-            <tb><input type="number" name="myScore" required /></tb>
+            <tb><input type="number" name="myScore" max="4" required /></tb>
         </tr>
         <br>
         <tr>
             <tb>相手の取ったセット数</tb>
-            <tb><input type="number" name="opponentScore" required /></tb>
+            <tb><input type="number" name="opponentScore" max="4" required /></tb>
         </tr>
     </table>
     <input type="submit" name="button" value="登録" >

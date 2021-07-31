@@ -14,33 +14,26 @@ public class MatchDAO extends Client{
     private static Default user;
 
     //Match登録メソッド
-    public static void registMatch(Match match,Integer userId) {
+    public static void registMatch(Match match) {
         Connection connection = null;
         PreparedStatement stmt = null;
-        PreparedStatement stmt2 = null;
         ResultSet rs = null;
 
         try {
             //SQLコマンド
             String sql = "insert into matches (id,name,round) values(?, ?, ?)";
-            String sql2 = "insert into regist (matches_id,users_id) values(?, ?)";
 
             connection = create();
 
             //SQLコマンドの実行
             stmt = connection.prepareStatement(sql);
-            stmt2 = connection.prepareStatement(sql2);
 
             //SQLコマンドの?に値を代入する
             stmt.setInt(1, match.getId());
             stmt.setString(2, match.getName());
             stmt.setString(3, match.getRound());
 
-            stmt2.setInt(1, match.getId());
-            stmt2.setInt(2, userId);
-
             stmt.executeUpdate();
-            stmt2.executeUpdate();
             return;
 
         } catch (SQLException e) {
@@ -51,14 +44,14 @@ public class MatchDAO extends Client{
         }
     }
 
-    public ArrayList<Match> searchMatchList(){
+    public ArrayList<Match> searchMatchList(Integer userId){
         Connection connection = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
             ArrayList<Match> list = new ArrayList<Match>();
             // SQLコマンド
-            String sql = "select * from matches";
+            String sql = "select * from matches inner join regists on matches.id = regists.matches_id where users_id = '" + userId + "'";
             connection = create();
             // SQLのコマンドを実行する
             // 実行結果はrsに格納される
@@ -79,39 +72,4 @@ public class MatchDAO extends Client{
             close(connection,stmt,rs);
         }
     }
-
-//
-//    public static User selectUserByMail(String mail) {
-//        Connection connection = null;
-//        PreparedStatement stmt = null;
-//        ResultSet rs = null;
-//        try {
-//            String sql = "select * from users where mail = ?";
-//            connection = create();
-//            stmt = connection.prepareStatement(sql);
-//            stmt.setString(1, mail);
-//            rs = stmt.executeQuery();
-//            //スコープの問題があるので一旦外で定義
-//            User user = null;
-//            if (rs.next()) {
-//                user = new User(
-//                        rs.getInt("id"),
-//                        rs.getString("name"),
-//                        rs.getString("mail"),
-//                        rs.getString("ps"),
-//                        rs.getString("answer"),
-//                        rs.getTimestamp("created_at"),
-//                        rs.getTimestamp("updated_at"),
-//                        rs.getInt("questions_id")
-//                );
-//            }
-//            return user;
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            return null;
-//        } finally {
-//            close(connection, stmt, rs);
-//        }
-//    }
-
 }

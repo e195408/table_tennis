@@ -42,6 +42,6 @@ public class SignUp extends HttpServlet {
         user.registUser();
 
         //成功したらsampleTest.javaにGETリクエストを送る
-        response.sendRedirect("/test");
+        response.sendRedirect("/sample");
     }
 }

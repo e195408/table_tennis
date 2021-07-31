@@ -65,23 +65,4 @@ public class Result extends Default {
     public Integer getRegistId(){ return this.registId; }
     public Integer getOpponentId(){ return this.opponentId; }
     public String getOpponentName(){ return this.opponentName; }
-
-//    //User認証の機構
-//    public boolean authenticateUser(HttpServletRequest request) {
-//        //Mailをもとにユーザーが存在するか調べる
-//        User persistedUser = UserDAO.selectUserByMail(this.mail);
-//        if (persistedUser == null) {    //Mailをもつユーザーがいなければ
-//            return false;
-//        }
-//        //ここからはMailをもつユーザーがいればの話
-//        this.hashPassword();    //入力されたパスワードをハッシュ化
-//        if (this.ps.equals(persistedUser.ps)) { //ハッシュ化したものとDBのパスワードが一致すれば
-//            HttpSession session = request.getSession(); //セッションを作って
-//            session.setAttribute(currentUserKey, persistedUser);    //セッションスコープにユーザー情報保存
-//            return true;
-//        } else {    //パスワードが違ったらfalseを返す
-//            return false;
-//        }
-//    }
-
 }

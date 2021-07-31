@@ -14,5 +14,9 @@
 <a href = /Result/New>試合詳細登録する</a>
 <br>
 <a href = /Search>対戦結果検索する</a>
+<br>
+<br>
+<br>
+<a href = /signOut>ログアウトする</a>
 </body>
 </html>
