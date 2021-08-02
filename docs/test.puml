@@ -96,10 +96,11 @@ class Question{
     getContent():String
 }
 
+Question"1" -- "0..*"User
 User"1" -- "0..*"Opponent
 User"1" -ri- "0..*"Regist
-Regist"1" -- "1"Match
-Regist"1" -- "0..*"Result
+Regist"1" -ri- "1"Match
+Regist"1" -do- "0..*"Result
 Result"0..*" -- "1"Opponent
 Default <-- User
 Default <-- Result
