@@ -81,7 +81,7 @@ public class ResultDAO extends Client{
             ArrayList<Result> list = new ArrayList<Result>();
             // SQLコマンド
             String sql =
-                    "select res.my_score,res.opponent_score,opp.name,r.name,r.round from results as res join opponents as opp on (res.opponents_id = opp.id)" +
+                    "select res.id,res.my_score,res.opponent_score,opp.name,r.name,r.round from results as res join opponents as opp on (res.opponents_id = opp.id)" +
                             "JOIN (SELECT reg.id,mat.name,mat.`round` FROM regists as reg JOIN matches as mat ON reg.matches_id = mat.id) AS r ON res.regists_id = r.id " +
                             "where opp.id =" + opponentId;
             connection = create();
@@ -93,7 +93,7 @@ public class ResultDAO extends Client{
             while(rs.next())
             {
                 Result result = new Result(
-                        null,
+                        rs.getInt("res.id"),
                         rs.getInt("res.my_score"),
                         rs.getInt("res.opponent_score"),
                         rs.getString("opp.name"),
