@@ -1,52 +1,110 @@
 @startuml
 
-class User{
-    id:int
-    name:varchar
-    mail:varchar
-    ps:varchar
-    answer:varchar
-    createdAt:datetime
-    updatedAt:datetime
-    questionsId:int
+class Default{
+    id:Integer
+
+    setId():void
+    getId():Integer
 }
 
-class Questions{
-    id:int
-    content:varchar
+class User{
+    name:String
+    mail:String
+    ps:String
+    answer:String
+    questionsId:Integer
+    createdAt:Datetime
+    updatedAt:Datetime
+
+    setName():void
+    setMail():void
+    setPs():void
+    setQuestionId():void
+    setAnswer():void
+    setCreatedAt():void
+    setUpdatedAt():void
+    getName():String
+    getMail():String
+    getPs():String
+    getQuestionId():Integer
+    getAnswer():String
+    getCreatedAt():Timestamp
+    getUpdatedAt():Timestamp
+    registUser():void
+    authenticateUser():boolean
+    hashPassword():void
+    getHash():String
+    getHexString():String
 }
 
 class Result{
-    id:int
-    myScore:int
-    opponentScore:int
-    registId:int
-    opponentId:int
+    myScore:Integer
+    opponentScore:Integer
+    registId:Integer
+    opponentId:Integer
+
+    setMyScore():void
+    setOpponentScore():void
+    setRegistId():void
+    setOpponentId():void
+    setOpponentName():void
+    getMyScore():Integer
+    getOpponentScore():Integer
+    getRegistId():Integer
+    getOpponentId():Integer
+    getOpponentName():String
+    registResult():void
 }
 
 class Match{
-        id:int
-        varchar match_name
-        varchar round
+    name:String
+    round:String
+
+    setName():void
+    setRound():void
+    getName():String
+    getRound():String
+    registMatch():void
 }
 
 class Opponent{
-    id:int
-   name:varchar
-   userId:int
+   name:String
+   userId:Integer
+
+   setName():void
+   setUserId():void
+   getName():String
+   getUserId():Integer
+   registOpponent():void
 }
 
 class Regist{
-    id:int
-    matchId:int
-    userId:int
+    matchId:Integer
+    userId:Integer
+
+    setMatchId():void
+    setUserId()void
+    getMatchId():Integer
+    getUserId():Integer
+    registRegists():void
 }
 
-User"0..*" -le- "1"Questions
+class Question{
+    content:String
+
+    setContent():void
+    getContent():String
+}
+
 User"1" -- "0..*"Opponent
 User"1" -ri- "0..*"Regist
 Regist"1" -- "1"Match
 Regist"1" -- "0..*"Result
 Result"0..*" -- "1"Opponent
+Default <-- User
+Default <-- Result
+Default <-- Match
+Default <-- Opponent
+Default <-- Regist
 
 @enduml

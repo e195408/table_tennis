@@ -34,4 +34,8 @@ public class Regist extends Default {
     public Integer getMatchId(){ return this.matchId; }
     public Integer getUserId(){ return this.userId; }
 
+    //Registを登録するメソッド
+    public static void registRegists(Regist regist) {
+        RegistDAO.registRegists(regist);
+    }
 }

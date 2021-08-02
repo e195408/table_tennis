@@ -73,7 +73,7 @@ public class New extends HttpServlet {
 
         Result.registResult(result);
 
-        //成功したらsampleTest.javaにGETリクエストを送る
+        //成功したらSuccess.javaにGETリクエストを送る
         response.sendRedirect("/success");
     }
 }

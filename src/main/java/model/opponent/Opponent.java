@@ -35,4 +35,10 @@ public class Opponent extends Default {
     public String getName(){ return this.name; }
     public Integer getUserId(){ return this.userId; }
 
+    //Opponentを登録するメソッド
+    public static void registOpponent(Opponent opponent) {
+        OpponentDAO.registOpponent(opponent);
+    }
+
+
 }
