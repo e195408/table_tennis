@@ -25,9 +25,15 @@
             <td>${result.opponentName}</td>
             <td>${result.myScore}</td>
             <td>${result.opponentScore}</td>
+            <td>
+                <a href="/result/delete?id=${result.id}">
+                削除する</a>
+            </td>
         </tr>
     </c:forEach>
 </table>
+
+<br><br><br>
 <a href = /test>マイページへ移動する</a><br>
 </body>
 </html>

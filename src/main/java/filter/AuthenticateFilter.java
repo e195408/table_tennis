@@ -56,7 +56,7 @@ public class AuthenticateFilter implements Filter {
         }
 
         // ログアウト（画面）にアクセスしたとき
-        else if (servletPath.equals("/sessions/delete")) {
+        else if (servletPath.equals("/signOut")) {
             if (currentUser == null) {
                 // リダイレクト
                 httpServletResponse.sendRedirect("/sessions/new");
