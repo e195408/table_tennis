@@ -11,10 +11,13 @@
     <title>戦績管理システム</title>
 </head>
 <body>
-<a>ようこそ戦績管理システムへ</a>
-
+<h1>ようこそ戦績管理システムへ</h1>
+<style>
+    h1{font-size: 25px;
+        color: darkslategray;
+    }
+</style>
 <form action=/ method="get">
-
 <br>
 <a href="/sessions/new">ログインする</a>
 <br>

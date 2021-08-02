@@ -4,7 +4,12 @@
     <title>新規ユーザー情報登録</title>
 </head>
 <body>
-<p>ユーザー情報を入力してください</p>
+<h1>ユーザー情報を入力してください</h1>
+<style>
+    h1{font-size: 25px;
+        color: darkslategray;
+    }
+</style>
 <form action="/User/SignUp" method="post">
     <table>
         <tr>

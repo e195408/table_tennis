@@ -1,30 +1,52 @@
 @startuml
 
 class User{
-    int id
-    varchar user_name
-    varchar mail
-    varchar ps
-    varchar answer
-    datetime created_at
-    datetime updated_at
+    id:int
+    name:varchar
+    mail:varchar
+    ps:varchar
+    answer:varchar
+    createdAt:datetime
+    updatedAt:datetime
+    questionsId:int
+}
 
-    login()
-    register_result()
+class Questions{
+    id:int
+    content:varchar
 }
 
 class Result{
-       int id
-       varchar round
-       varchar match_name
-       int my_score
-       int opponent_score
-       datetime match_date
-       varchar opponent_name
-       datetime created_at
-       datetime updated_at
+    id:int
+    myScore:int
+    opponentScore:int
+    registId:int
+    opponentId:int
 }
 
-User"1" o-- "0..*"Result
+class Match{
+        id:int
+        varchar match_name
+        varchar round
+}
+
+class Opponent{
+    id:int
+   name:varchar
+   userId:int
+}
+
+class Regist{
+    id:int
+    matchId:int
+    userId:int
+}
+
+User"0..*" -le- "1"Questions
+User"1" -- "0..*"Opponent
+User"1" -ri- "0..*"Regist
+Regist"1" -- "1"Match
+Regist"1" -- "0..*"Result
+Result"0..*" -- "1"Opponent
 
 @enduml

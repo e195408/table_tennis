@@ -65,4 +65,9 @@ public class Result extends Default {
     public Integer getRegistId(){ return this.registId; }
     public Integer getOpponentId(){ return this.opponentId; }
     public String getOpponentName(){ return this.opponentName; }
+
+    //resultを登録するメソッド
+    public static void registResult(Result result) {
+        ResultDAO.registResult(result);
+    }
 }

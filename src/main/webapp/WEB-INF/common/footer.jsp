@@ -7,10 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Title</title>
-</head>
 <body>
-
+<p>マイページへ移動する場合は<a href = /test>こちら</a></p>
+<style>
+    h1{font-size: 25px;
+        color: darkslategray;
+    }
+</style>
 </body>
 </html>

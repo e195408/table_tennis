@@ -11,7 +11,7 @@
     <title>登録成功画面</title>
 </head>
 <body>
-<p>登録成功</p>
-<a href = /test>マイページへ</a><br>
+<h1>登録成功</h1>
+<%@ include file="./common/footer.jsp" %>
 </body>
 </html>

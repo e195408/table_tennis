@@ -71,7 +71,7 @@ public class New extends HttpServlet {
                 opponentId
         );
 
-        ResultDAO.registResult(result);
+        Result.registResult(result);
 
         //成功したらsampleTest.javaにGETリクエストを送る
         response.sendRedirect("/success");

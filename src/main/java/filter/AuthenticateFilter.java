@@ -65,15 +65,6 @@ public class AuthenticateFilter implements Filter {
             }
         }
 
-        //入退室管理画面にアクセスしたとき
-        else if (servletPath.equals("/status/*")) {
-            if (currentUser == null) {
-                chain.doFilter(req, resp);
-            } else {
-                httpServletResponse.sendRedirect("/users");
-            }
-        }
-
         //トップ画面
         else if (servletPath.equals("/")) {
             if (currentUser == null) {
