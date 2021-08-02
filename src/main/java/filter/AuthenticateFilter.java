@@ -45,16 +45,6 @@ public class AuthenticateFilter implements Filter {
             }
         }
 
-        // 初期画面にアクセスしたとき
-        else if (servletPath.equals("/index")) {
-            if (currentUser == null) {
-                chain.doFilter(req, resp);
-            } else {
-                // リダイレクト
-                httpServletResponse.sendRedirect("/users");
-            }
-        }
-
         // ログアウト（画面）にアクセスしたとき
         else if (servletPath.equals("/signOut")) {
             if (currentUser == null) {
