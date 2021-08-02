@@ -1,10 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>新規ユーザー情報登録</title>
 </head>
 <body>
-<p>ユーザー情報を入力してください</p>
+<h1>ユーザー情報を入力してください</h1>
+<style>
+    h1{font-size: 25px;
+        color: darkslategray;
+    }
+</style>
 <form action="/User/SignUp" method="post">
     <table>
         <tr>
@@ -22,12 +28,11 @@
         <tr>
             <td>秘密の質問</td>
             <td>
-                <select name="question">
-                    <option value="0">出身地は？</option>
-                    <option value="1">飼っていたペットの名前は？</option>
-                    <option value="2">最初に行った海外の都市は？</option>
-                    <option value="3">兄弟姉妹の名前は？</option>
-                    <option value="4">好きなスポーツは？</option>
+                <select name="question" class="form-select">
+                    <option selected>選択してください</option>
+                    <c:forEach var="question" items="${question}">
+                        <option value="${question.id}"><c:out value="${question.content}"/></option>
+                    </c:forEach>
                 </select>
                 →質問の答え
                 <input type="answer" name="answer" required />

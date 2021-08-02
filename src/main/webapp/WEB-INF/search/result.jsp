@@ -12,10 +12,11 @@
     <title>検索結果画面</title>
 </head>
 <body>
-<p>検索結果一覧</p>
+<h1>検索結果一覧</h1>
 <table>
     <tr>
         <th>相手の名前</th>
+        <th>試合情報</th>
         <th>自分の取ったセット数</th>
         <th>相手の取ったセット数</th>
     </tr>
@@ -32,8 +33,6 @@
         </tr>
     </c:forEach>
 </table>
-
-<br><br><br>
-<a href = /test>マイページへ移動する</a><br>
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

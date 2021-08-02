@@ -11,8 +11,8 @@
     <title>ログイン後画面</title>
 </head>
 <body>
-<p>ログイン成功</p>
+<h1>ログイン成功</h1>
 <p>あなたの名前は${currentUser.getName()}</p>
-<a href = /test>マイページへ移動する</a><br>
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>
