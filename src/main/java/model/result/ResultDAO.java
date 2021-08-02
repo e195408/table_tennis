@@ -48,6 +48,31 @@ public class ResultDAO extends Client{
         }
     }
 
+    public static void deleteResult(Integer deleteId) {
+        Connection connection = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            //SQLコマンド
+            String sql = "delete from results where id = '" + deleteId + "'";
+
+            connection = create();
+
+            //SQLコマンドの実行
+            stmt = connection.prepareStatement(sql);
+
+            stmt.executeUpdate();
+            return;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return;
+        } finally {
+            close(connection, stmt, rs);
+        }
+    }
+
     public ArrayList<Result> searchResultList(Integer opponentId){
         Connection connection = null;
         PreparedStatement stmt = null;
@@ -77,6 +102,4 @@ public class ResultDAO extends Client{
             close(connection,stmt,rs);
         }
     }
-
-
 }

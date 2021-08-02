@@ -26,6 +26,10 @@
             <td>${result.opponentName}</td>
             <td>${result.myScore}</td>
             <td>${result.opponentScore}</td>
+            <td>
+                <a href="/result/delete?id=${result.id}">
+                削除する</a>
+            </td>
         </tr>
     </c:forEach>
 </table>
