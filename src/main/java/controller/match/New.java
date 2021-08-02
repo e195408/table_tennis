@@ -53,7 +53,6 @@ public class New extends HttpServlet{
         Match.registMatch(match);
         Regist.registRegists(regist);
 
-
         //成功したらsampleTest.javaにGETリクエストを送る
         response.sendRedirect("/success");
     }

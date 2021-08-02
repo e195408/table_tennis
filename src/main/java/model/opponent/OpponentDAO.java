@@ -10,7 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class OpponentDAO extends Client {
-    //User登録メソッド
+    //Opponent登録メソッド
     public static void registOpponent(Opponent opponent) {
         Connection connection = null;
         PreparedStatement stmt = null;

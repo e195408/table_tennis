@@ -41,7 +41,7 @@ public class RegistDAO extends Client {
     }
 
     public static void registRegists(Regist regist) {
-    //User登録メソッド
+    //Regist登録メソッド
         Connection connection = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
