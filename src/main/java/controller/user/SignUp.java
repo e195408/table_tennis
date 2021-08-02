@@ -1,8 +1,11 @@
 package controller.user;
 
+import model.question.Question;
+import model.question.QuestionDAO;
 import model.user.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +16,17 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/User/SignUp")
 public class SignUp extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        // QuestionListを作成
+        ArrayList<Question> list = new ArrayList<>();
+        QuestionDAO questionDAO= new QuestionDAO();
+        // Question一覧を持ってくる
+        list = questionDAO.searchQuestionList();
+
+        // requestオブジェクトの文字エンコーディングの設定
+        request.setCharacterEncoding("UTF-8");
+        request.setAttribute("question",list);
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/users/signUp.jsp");
         dispatcher.forward(request, response);
     }

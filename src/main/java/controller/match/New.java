@@ -50,8 +50,8 @@ public class New extends HttpServlet{
                 userId
         );
 
-        MatchDAO.registMatch(match);
-        RegistDAO.registRegists(regist);
+        Match.registMatch(match);
+        Regist.registRegists(regist);
 
 
         //成功したらsampleTest.javaにGETリクエストを送る

@@ -35,7 +35,8 @@ public class New extends HttpServlet {
                 name,
                 user.getId()
         );
-        OpponentDAO.registOpponent(opponent);
+
+        Opponent.registOpponent(opponent);
 
         //成功したらsampleTest.javaにGETリクエストを送る
         response.sendRedirect("/success");
