@@ -34,4 +34,9 @@ public class Match extends Default{
     public String getName(){ return this.name; }
     public String getRound(){ return this.round; }
 
+    //Matchを登録するメソッド
+    public static void registMatch(Match match) {
+        MatchDAO.registMatch(match);
+    }
+
 }

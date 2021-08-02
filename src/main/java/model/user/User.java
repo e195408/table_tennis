@@ -48,6 +48,8 @@ public class User extends Default {
     public void setPs(String ps){this.ps = ps; }
     public void setQuestionId(Integer questionId){this.questionId = questionId;}
     public void setAnswer(String answer){this.answer = answer;}
+    public void setCreatedAt(Timestamp createdAt) { this.createdAt = createdAt; }
+    public void setUpdatedAt(Timestamp updatedAt) {this.updatedAt = updatedAt; }
 
     //getメソッド
     public String getName(){ return this.name; }

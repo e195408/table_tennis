@@ -54,7 +54,7 @@ public class Result extends Default {
 
     //setメソッド
     public void setMyScore(Integer myScore) { this.myScore = myScore; }
-    public void setOpponent(Integer opponentScore){ this.opponentScore = opponentScore; }
+    public void setOpponentScore(Integer opponentScore){ this.opponentScore = opponentScore; }
     public void setRegistId(Integer registId){ this.registId = registId; }
     public void setOpponentId(Integer opponentId){ this.opponentId = opponentId; }
     public void setOpponentName(String opponentName){ this.opponentName = opponentName; }
