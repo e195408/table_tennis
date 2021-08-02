@@ -16,13 +16,17 @@
 <table>
     <tr>
         <th>相手の名前</th>
+        <th>大会名</th>
+        <th>試合段階</th>
         <th>自分の取ったセット数</th>
         <th>相手の取ったセット数</th>
     </tr>
     <br>
-    <c:forEach var="result" items="${result}">
+    <c:forEach var="result" items="${resultList}">
         <tr>
             <td>${result.opponentName}</td>
+            <td>${result.matchName}</td>
+            <td>${result.matchRound}</td>
             <td>${result.myScore}</td>
             <td>${result.opponentScore}</td>
         </tr>
