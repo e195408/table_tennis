@@ -11,7 +11,12 @@
     <title>アカウント登録後画面</title>
 </head>
 <body>
-<p>登録成功</p>
+<h1>登録成功</h1>
+<style>
+    h1{font-size: 25px;
+        color: darkslategray;
+    }
+</style>
 <a href = /sessions/new>ログインする</a><br>
 </body>
 </html>

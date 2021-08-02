@@ -12,7 +12,7 @@
     <title>検索画面</title>
 </head>
 <body>
-<p>検索したい相手を入力してください</p>
+<h1>検索したい相手を入力してください</h1>
 <form  action="/Search" method="post">
     <table>
         <tr>
@@ -29,5 +29,6 @@
     </table>
     <input type="submit" name="button" value="検索">
 </form>
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

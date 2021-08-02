@@ -11,7 +11,12 @@
     <title>ログアウト画面</title>
 </head>
 <body>
-<a>ログアウトしました</a>
+<h1>ログアウトしました</h1>
+<style>
+    h1{font-size: 25px;
+        color: darkslategray;
+    }
+</style>
 <br><br>
 <a href = "/" >トップページに戻る<a>
 </body>

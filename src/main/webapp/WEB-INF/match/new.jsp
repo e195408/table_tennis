@@ -8,10 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>新規試合登録</title>
+    <title>試合情報登録画面</title>
 </head>
 <body>
-<p>試合情報を入力してください</p>
+<h1>試合情報を入力してください</h1>
 <form action="/Match/New" method="post">
     <table>
         <tr>
@@ -32,5 +32,6 @@
     </table>
     <input type="submit" name="button" value="登録">
 </form>
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>
