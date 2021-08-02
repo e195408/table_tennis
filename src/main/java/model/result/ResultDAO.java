@@ -80,7 +80,10 @@ public class ResultDAO extends Client{
         try {
             ArrayList<Result> list = new ArrayList<Result>();
             // SQLコマンド
-            String sql = "select * from results inner join opponents on results.opponents_id = opponents.id where opponents_id = '" + opponentId + "'";
+            String sql =
+                    "select res.my_score,res.opponent_score,opp.name,r.name,r.round from results as res join opponents as opp on (res.opponents_id = opp.id)" +
+                            "JOIN (SELECT reg.id,mat.name,mat.`round` FROM regists as reg JOIN matches as mat ON reg.matches_id = mat.id) AS r ON res.regists_id = r.id " +
+                            "where opp.id =" + opponentId;
             connection = create();
             // SQLのコマンドを実行する
             // 実行結果はrsに格納される
@@ -89,7 +92,14 @@ public class ResultDAO extends Client{
 
             while(rs.next())
             {
-                Result result = new Result(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getString("name"));
+                Result result = new Result(
+                        null,
+                        rs.getInt("res.my_score"),
+                        rs.getInt("res.opponent_score"),
+                        rs.getString("opp.name"),
+                        rs.getString("r.name"),
+                        rs.getString("r.round")
+                );
                 list.add(result);
                 // 取得した情報を表示します。
             }

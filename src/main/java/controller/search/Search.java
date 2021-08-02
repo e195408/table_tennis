@@ -48,10 +48,9 @@ public class Search extends HttpServlet {
         //requestオブジェクトから情報を取り出す
         Integer opponentId = Integer.parseInt(request.getParameter("opponent"));
 
-        ArrayList<Result> resultList = new ArrayList<>();
         ResultDAO resultDAO = new ResultDAO();
-        resultList = resultDAO.searchResultList(opponentId);
-        request.setAttribute("result",resultList);
+        ArrayList<Result> resultList = resultDAO.searchResultList(opponentId);
+        request.setAttribute("resultList", resultList);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/search/result.jsp");
         dispatcher.forward(request, response);
