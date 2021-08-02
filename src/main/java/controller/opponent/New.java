@@ -25,7 +25,6 @@ public class New extends HttpServlet {
 
         //requestオブジェクトから情報を取り出す
         String name = request.getParameter("name");
-
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("currentUser");
 
